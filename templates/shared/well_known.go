@@ -2,7 +2,7 @@ package shared
 
 import (
 	"github.com/envoyproxy/protoc-gen-validate/validate"
-	"github.com/lyft/protoc-gen-star"
+	pgs "github.com/lyft/protoc-gen-star"
 )
 
 type WellKnown string
@@ -11,6 +11,7 @@ const (
 	Email    WellKnown = "email"
 	Hostname WellKnown = "hostname"
 	UUID     WellKnown = "uuid"
+	ICCID    WellKnown = "iccid"
 )
 
 func FileNeeds(f pgs.File, wk WellKnown) bool {
@@ -74,6 +75,10 @@ func strRulesNeeds(rules *validate.StringRules, wk WellKnown) bool {
 		}
 	case UUID:
 		if rules.GetUuid() {
+			return true
+		}
+	case ICCID:
+		if rules.GetIccid() {
 			return true
 		}
 	}

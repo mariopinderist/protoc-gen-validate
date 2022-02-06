@@ -63,3 +63,10 @@ const uuidTpl = `
                 return nil
         }
 `
+
+const iccidTpl = `
+	func (m {{ .TypeName.Pointer }}) _validateIccid(uuid string) error {
+		fmt.Println(uuid)
+		return nil
+	}
+`

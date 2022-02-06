@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package pgv.example.foo;
 
+option go_package = "pgv/example/foo";
+
 import "validate/validate.proto";
 
 message BarNone {
@@ -10,6 +12,8 @@ message BarNone {
 
 message BarOne {
   int32 value = 1 [(validate.rules).int32 = { not_in: 1 }];
+  string valueIccid = 2 [(validate.rules).string.iccid = true];
+  string valueUuid = 3 [(validate.rules).string.uuid = true];
 }
 
 message Bars {

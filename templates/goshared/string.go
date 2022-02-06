@@ -173,6 +173,12 @@ const strTpl = `
 			if !all { return err }
 			errors = append(errors, err)
 		}
+	{{ else if $r.GetIccid }}
+		if err := m._validateIccid({{ accessor . }}); err != nil {
+			err = {{ errCause . "err" "value must be a valid Iccid" }}
+			if !all { return err }
+			errors = append(errors, err)
+		}
 	{{ end }}
 
 	{{ if $r.Pattern }}

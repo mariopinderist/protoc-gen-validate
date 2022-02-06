@@ -71,6 +71,8 @@ func (m {{ (msgTyp .).Pointer }}) validate(all bool) error {
 
 {{ if needs . "uuid" }}{{ template "uuid" . }}{{ end }}
 
+{{ if needs . "iccid" }}{{ template "iccid" . }}{{ end }}
+
 {{ cmt (multierrname .) " is an error wrapping multiple validation errors returned by " (msgTyp .) ".ValidateAll() if the designated constraints aren't met." -}}
 type {{ multierrname . }} []error
 
